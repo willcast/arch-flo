@@ -32,7 +32,7 @@ build() {
     --with-dri-driverdir=/usr/lib/xorg/modules/dri \
     --with-dri-drivers= --with-gallium-drivers=freedreno,swrast \
   --with-egl-platforms=x11 --enable-gles2 --enable-gles1 \
-  --enable-gallium-egl --disable-gallium-llvm --enable-xa --disable-dri3 \
+  --enable-gallium-egl --disable-gallium-llvm --disable-xa --disable-dri3 \
   --enable-gbm
   #--enable-debug
   make
@@ -43,7 +43,7 @@ build() {
 }
 
 package_freedreno-dri() {
-  pkgdesc="Mesa drivers for AMD/ATI Radeon"
+  pkgdesc="Mesa drivers for Qualcomm Adreno"
   depends=('mesa-libgl' 'libtxc_dxtn' "mesa=${pkgver}")
   conflicts=('xf86-video-ati<6.9.0-6')
 

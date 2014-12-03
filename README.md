@@ -17,15 +17,15 @@ the UART cable (which I failed at)
 - USB OTG (host)
 - Framebuffer
 - Audio - you need to setup PulseAudio as systemwide. Not sure why it does not work as a normal user. You will also need the alsaucm files from libasound2-data_1.0.27.2-1ubuntu6_all.deb
+- 3D graphics acceleration: OpenGL ES 1.0-3.0 and OpenGL 1.5/2.0.
 
 ### Bugs/What's not working
 
 - There is no frambuffer console
 - The Software Refresher in the kernel does not work. You will need to run my
 refresher app or fix the kernel :)
-- The new xa code from x86-video-freedreno-git does not work. gpuaddr in
+- The new xa (2D acceleration) code from x86-video-freedreno-git does not work. Xorg segfaults.
 kgsl_bo_gpuaddr comes back a 0
-- Hardware acceleration. Needs LibHybris, we're working on it.
 
 ### Not tested
 
@@ -154,6 +154,8 @@ The firmware.service is only needed since the firmware is not loaded in the init
 Install [xf86-video-freedreno-git](https://aur.archlinux.org/packages/xf86-video-freedreno-git) (AUR). Use the xorg.conf included (xorg directory).
 
 Instead of filling the AUR with crap you can use the mesa and libdrm PKGBUILDs included in the ```xorg``` directory. Always use the git versions as they have the latest freedreno fixes.
+
+For Mesa 3D to work, make sure you copy the provided ```rules.d/50-kgsl.rules``` to ```/etc/udev/rules.d/``` on the tablet's filesystem.
 
 ## Refreshing (refresher.c)
 
